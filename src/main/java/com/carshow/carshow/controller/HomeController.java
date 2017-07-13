@@ -26,7 +26,7 @@ public class HomeController {
     @RequestMapping("/")
     public String home(Map<String, Object> model) {
         model.put("message", "HowToDoInJava Reader !!");
-        return "home";
+        return "index";
     }
 
 }
