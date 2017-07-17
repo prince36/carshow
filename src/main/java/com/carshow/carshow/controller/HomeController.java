@@ -2,6 +2,7 @@ package com.carshow.carshow.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +27,17 @@ public class HomeController {
     @RequestMapping("/")
     public String home(Map<String, Object> model) {
         model.put("message", "HowToDoInJava Reader !!");
-        return "index";
+        return "home";
+    }
+    @RequestMapping("/w")
+    public String welcome(ModelMap map) {
+        map.put("currentDate", new Date());
+        return "home";
+    }
+
+    @RequestMapping("/ww")
+    public String home(){
+        return "Hello World!";
     }
 
 }
