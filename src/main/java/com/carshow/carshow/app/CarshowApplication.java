@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,9 @@ import java.util.Arrays;
 @EnableJpaRepositories(basePackages = "com.carshow.carshow.repo")
 @EntityScan(basePackages = "com.carshow.carshow.model")
 @EnableAutoConfiguration
-public class CarshowApplication {
+public class CarshowApplication extends SpringBootServletInitializer {
+
+	private static Class applicationClass = CarshowApplication.class;
 
 
 	public static void main(String[] args) {
@@ -30,6 +34,11 @@ public class CarshowApplication {
 		for (String beanName : beanNames) {
 			//System.out.println(beanName);
 		}
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(applicationClass);
 	}
 
 
