@@ -57,15 +57,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Wszystkie ogłoszenia samochodowe
-                        <small> todo </small>
+                        Ogłoszenia
+                        <small>Marka: ${brand} | Liczba ogłoszeń: ${countcars}</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="${contextPath}/cars/home">Dashboard</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-file"></i> Page X
+                            <i class="fa fa-file"></i> Marka: ${brand}
                         </li>
                     </ol>
                 </div>
@@ -74,16 +74,38 @@
 
             <div class="row">
                 <div class="col-lg-12">
-
-                    <c:forEach items="${cars}" var="item">
-                        ${item.power}<br>
-                    </c:forEach>
-
+                    <h2>Wszystkie ogłoszenia</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Wersja</th>
+                                <th>Rok produkcji</th>
+                                <th>Przebieg</th>
+                                <th>Cena</th>
+                                <th>Silnik</th>
+                                <th>Paliwo</th>
+                            </tr>
+                            </thead>
+                            <c:forEach items="${cars}" var="car">
+                                <tbody>
+                                <tr>
+                                    <td><a href="${contextPage}/cars/${car.idcars}">${car.model}</a></td>
+                                    <td><c:if test="${empty car.model_version}"> - - - </c:if>
+                                            ${car.model_version}</td>
+                                    <td>${car.year_production}</td>
+                                    <td>${car.course} km</td>
+                                    <td>${car.price} zł</td>
+                                    <td>${car.engine_cap} cm3</td>
+                                    <td>${car.fuel}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-
-
         </div>
         <!-- /.container-fluid -->
 

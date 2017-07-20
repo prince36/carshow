@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -47,7 +48,7 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Adminek <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -72,7 +73,7 @@
                 <a href="${contextPath}/cars/home"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="${contextPath}/cars"><i class="fa fa-fw fa-table"></i> Samochody</a>
+                <a href="${contextPath}/cars/cars"><i class="fa fa-fw fa-table"></i> Samochody</a>
             </li>
             <li>
                 <a href="${contextPath}/cars/4555"><i class="fa fa-fw fa-bar-chart-o"></i> CarPage 4555</a>
@@ -82,12 +83,14 @@
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Marki <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
-                    <li>
-                        <a href="${contextPath}/cars?brand=seat">Seat</a>
-                    </li>
-                    <li>
-                        <a href="#">Audi</a>
-                    </li>
+                    <c:forEach items="${brands}" var="xbrand">
+                        <c:if test="${not empty xbrand}">
+                            <li>
+                                <a href="${contextPath}/cars/cars/${xbrand}">${xbrand}</a>
+
+                            </li>
+                        </c:if>
+                    </c:forEach>
                 </ul>
             </li>
 
