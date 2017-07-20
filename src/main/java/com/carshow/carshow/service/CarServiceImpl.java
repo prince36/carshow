@@ -2,6 +2,7 @@ package com.carshow.carshow.service;
 
 import com.carshow.carshow.dao.CarDAO;
 import com.carshow.carshow.model.Car;
+import com.carshow.carshow.repo.CarOwnRepository;
 import com.carshow.carshow.repo.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,13 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 @Transactional
 public class CarServiceImpl implements CarService {
 
-    final CarRepository carRepository;
+    @Autowired
+    private CarRepository carRepository;
 
+    @Autowired
+    private CarOwnRepository carOwnRepository;
     @Autowired
     public CarServiceImpl(CarRepository carRepository){
         this.carRepository = carRepository;
@@ -32,6 +38,12 @@ public class CarServiceImpl implements CarService {
     public Page<Car> listAllByPage(Pageable pageable) {
         return carRepository.findAll(pageable);
     }
+
+    public List<Car> findByBrand(String brand) {
+        return carOwnRepository.findBybrand(brand);
+    }
+
+
 /*
     @Autowired
     private CarDAO carDAO;

@@ -3,6 +3,8 @@ package com.carshow.carshow.dao;
 import com.carshow.carshow.model.Car;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface CarDAO {
     /*
@@ -12,4 +14,8 @@ public interface CarDAO {
     public Car getCar(String car);
     public void deleteCar(long id);
     public List<Car> getCars();*/
+
+    //List<Car> getCarsByBrand(String brand);
+
+    //Set<Car> getCarsByFilter(Map<String, List<String>> filterParams);
 }
